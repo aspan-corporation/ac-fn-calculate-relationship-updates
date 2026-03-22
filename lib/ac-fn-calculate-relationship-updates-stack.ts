@@ -29,12 +29,6 @@ export class AcFnCalculateRelationshipUpdatesStack extends cdk.Stack {
       centralLogGroupArn,
     );
 
-    // SFN logging requires ARN without the CDK-appended :* suffix
-    const centralLogGroupName = ssm.StringParameter.valueForStringParameter(
-      this,
-      "/ac/monitoring/central-log-group-name",
-    );
-    const sfnLogGroupArn = `arn:aws:logs:${this.region}:${this.account}:log-group:${centralLogGroupName}`;
 
     // Get table names from SSM
     const searchTableName = ssm.StringParameter.valueForStringParameter(
@@ -281,13 +275,14 @@ export class AcFnCalculateRelationshipUpdatesStack extends cdk.Stack {
           destinations: [
             {
               cloudWatchLogsLogGroup: {
-                logGroupArn: sfnLogGroupArn,
+                logGroupArn: centralLogGroupArn,
               },
             },
           ],
           includeExecutionData: true,
           level: "ALL",
         },
+
         tracingConfiguration: {
           enabled: true,
         },
