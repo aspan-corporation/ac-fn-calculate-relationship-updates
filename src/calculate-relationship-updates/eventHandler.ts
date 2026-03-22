@@ -32,7 +32,7 @@ const logger = new Logger();
 
 export const lambdaHandler = async (
   dynamodbRecords: DynamoDBRecord[],
-  { logger }: Context,
+  _context: Context,
 ): Promise<PreparedReturn> => {
   const preparedReturn: PreparedReturn = extractMeta(dynamodbRecords, logger);
   logger.debug("metadata atoms", { metaAtoms: preparedReturn });
