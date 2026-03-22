@@ -227,7 +227,7 @@ export class AcFnCalculateRelationshipUpdatesStack extends cdk.Stack {
                             Parameters: {
                               "TableName": "${TagsTableName}",
                               Item: {
-                                "key#value.$": "$[\"key#value\"]",
+                                "key#value.$": "$.key#value",
                               },
                             },
                             End: true,
@@ -254,7 +254,7 @@ export class AcFnCalculateRelationshipUpdatesStack extends cdk.Stack {
                       "TableName": "${TagsTableName}",
                       Key: {
                         "key#value": {
-                          "S.$": "$[\"key#value\"].S",
+                          "S.$": "$.key#value.S",
                         },
                       },
                     },
