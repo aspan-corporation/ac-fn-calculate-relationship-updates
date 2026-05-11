@@ -45,7 +45,6 @@ const NON_SEARCHABLE_TAGS = [
   "ac:tau:latitude",
   "ac:tau:longitude",
   "ac:tau:size",
-  "ac:ediacara:hidden",
 ];
 
 export const extractMeta = (
