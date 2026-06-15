@@ -11,12 +11,6 @@ enum EventName {
   MODIFY = "MODIFY",
 }
 
-type DDBRecord = AttributeValue | Record<string, AttributeValue>;
-
-type Image = {
-  id: string;
-  tags: TagInput[];
-};
 
 type MetaAtom = {
   type: "add" | "delete";
